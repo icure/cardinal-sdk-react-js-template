@@ -158,7 +158,7 @@ export const api = createSlice({
             state.authProcess = authProcess;
             state.waitingForToken = true;
         });
-        builder.addCase(startAuthentication.rejected, (state, { }) => {
+        builder.addCase(startAuthentication.rejected, (state, {}) => {
             state.invalidEmail = true;
         });
         builder.addCase(completeAuthentication.fulfilled, (state, { payload: user }) => {
@@ -166,14 +166,14 @@ export const api = createSlice({
             state.online = true;
             state.waitingForToken = false;
         });
-        builder.addCase(completeAuthentication.rejected, (state, { }) => {
+        builder.addCase(completeAuthentication.rejected, (state, {}) => {
             state.invalidToken = true;
         });
         builder.addCase(login.fulfilled, (state, { payload: user }) => {
             state.user = user as User;
             state.online = true;
         });
-        builder.addCase(login.rejected, (state, { }) => {
+        builder.addCase(login.rejected, (state, {}) => {
             state.invalidToken = true;
             state.online = false;
         });
