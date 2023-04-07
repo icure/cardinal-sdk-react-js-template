@@ -38,7 +38,7 @@ const initialState: MedTechApiState = {
     mobilePhone: undefined,
 };
 
-export const startAuthentication = createAsyncThunk('medTechApi/startAuthentication', async (_payload, { getState }) => {
+export const startAuthentication = createAsyncThunk('medTechApi/startAuthentication', async (_payload: { recaptchaToken: string }, { getState }) => {
     const {
         auth: { email, firstName, lastName },
     } = getState() as { auth: MedTechApiState };

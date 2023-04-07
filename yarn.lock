@@ -1036,6 +1036,14 @@
   resolved "https://registry.npmjs.org/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
+"@babel/runtime-corejs3@^7.10.4":
+  version "7.21.0"
+  resolved "https://registry.npmjs.org/@babel/runtime-corejs3/-/runtime-corejs3-7.21.0.tgz#6e4939d9d9789ff63e2dc58e88f13a3913a24eba"
+  integrity sha512-TDD4UJzos3JJtM+tHX+w2Uc+KWj7GV+VKKFdMVd2Rx8sdA19hcc3P3AHFYd5LVOw+pYuSd5lICC3gm52B6Rwxw==
+  dependencies:
+    core-js-pure "^3.25.1"
+    regenerator-runtime "^0.13.11"
+
 "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.20.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.21.0"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.21.0.tgz#5b55c9d394e5fcf304909a8b00c07dc217b56673"
@@ -3429,10 +3437,20 @@ core-js-pure@^3.23.3:
   resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.29.1.tgz#1be6ca2b8772f6b4df7fc4621743286e676c6162"
   integrity sha512-4En6zYVi0i0XlXHVz/bi6l1XDjCqkKRq765NXuX+SnaIatlE96Odt5lMLjdxUiNI1v9OXI5DSLWYPlmTfkTktg==
 
+core-js-pure@^3.25.1:
+  version "3.30.0"
+  resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.30.0.tgz#41b6c42e5f363bd53d79999bd35093b17e42e1bf"
+  integrity sha512-+2KbMFGeBU0ln/csoPqTe0i/yfHbrd2EUhNMObsGtXMKS/RTtlkYyi+/3twLcevbgNR0yM/r0Psa3TEoQRpFMQ==
+
 core-js@^3.19.2:
   version "3.29.1"
   resolved "https://registry.npmjs.org/core-js/-/core-js-3.29.1.tgz#40ff3b41588b091aaed19ca1aa5cb111803fa9a6"
   integrity sha512-+jwgnhg6cQxKYIIjGtAHq2nwUOolo9eoFZ4sHfUH09BLXBgxnH4gA0zEd+t+BO2cNB8idaBtZFcFTRjQJRJmAw==
+
+core-js@^3.6.5:
+  version "3.30.0"
+  resolved "https://registry.npmjs.org/core-js/-/core-js-3.30.0.tgz#64ac6f83bc7a49fd42807327051701d4b1478dea"
+  integrity sha512-hQotSSARoNh1mYPi9O2YaWeiq/cEB95kOrFb4NCrO4RIFt1qqNpKsaE+vy/L3oiqvND5cThqXzUU3r9F7Efztg==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -4869,6 +4887,24 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==
+
+friendly-challenge@^0.9.11:
+  version "0.9.11"
+  resolved "https://registry.npmjs.org/friendly-challenge/-/friendly-challenge-0.9.11.tgz#b311ae47c826bc99b4fd5012942b526c049af6d1"
+  integrity sha512-5kpn5Fg4noxFDNl1OKrdisL5jCa7CYECc3RZ+ToUwEuTj1yg7ayQFofOTtAhiT+lmwp4VE4oxHqQadg5hvJEXg==
+  dependencies:
+    "@babel/runtime-corejs3" "^7.10.4"
+    core-js "^3.6.5"
+    friendly-pow "0.2.2"
+    object-assign-polyfill "^0.1.0"
+    promis "^1.1.4"
+    url-polyfill "^1.1.10"
+    whatwg-fetch "^3.4.1"
+
+friendly-pow@0.2.2:
+  version "0.2.2"
+  resolved "https://registry.npmjs.org/friendly-pow/-/friendly-pow-0.2.2.tgz#c3bbcf35dc9ef15e0ee90a30a0cf6eb3beaad4f3"
+  integrity sha512-oTGCqr6d9iIv8TEWmqJK8p1Gkr9hDEgb7g22pTCDZz+Y9zaaWtCNxmrD+/+KIYbf1/64rgba5Vj4hU7AxE/vkA==
 
 fs-constants@^1.0.0:
   version "1.0.0"
@@ -7008,6 +7044,11 @@ nwsapi@^2.2.0:
   resolved "https://registry.npmjs.org/nwsapi/-/nwsapi-2.2.2.tgz#e5418863e7905df67d51ec95938d67bf801f0bb0"
   integrity sha512-90yv+6538zuvUMnN+zCr8LuV6bPFdq50304114vJYJ8RDyK8D5O9Phpbd6SZWgI7PwzmmfN1upeOJlvybDSgCw==
 
+object-assign-polyfill@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/object-assign-polyfill/-/object-assign-polyfill-0.1.0.tgz#2b72338ff68b770cdcda781860484bb8b2f40920"
+  integrity sha512-VUMV/J6DvEw4+CVrAezk2Ky6E2ARmCFViD3khtywRc7c/9AAH03L9jkQaji3spp/Tq4hHRb1zoUTDyboScXGUg==
+
 object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -8000,6 +8041,11 @@ process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
+
+promis@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/promis/-/promis-1.1.4.tgz#0d0ef43ccacacdd8f9679cd6e0950f7c7f52096c"
+  integrity sha512-PYoK1UKLWbi+kKcYFVbNhjfh9RhLzIr0jEO12Enw2HXBAX55l0eUemBjRKoeG/qpN8W2vzyKyZk01XTlff6IWw==
 
 promise@^8.1.0:
   version "8.3.0"
@@ -9607,6 +9653,11 @@ url-parse@^1.5.3:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
 
+url-polyfill@^1.1.10:
+  version "1.1.12"
+  resolved "https://registry.npmjs.org/url-polyfill/-/url-polyfill-1.1.12.tgz#6cdaa17f6b022841b3aec0bf8dbd87ac0cd33331"
+  integrity sha512-mYFmBHCapZjtcNHW0MDq9967t+z4Dmg5CJ0KqysK3+ZbyoNOWQHksGCTWwDhxGXllkWlOc10Xfko6v4a3ucM6A==
+
 url-to-options@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/url-to-options/-/url-to-options-1.0.1.tgz#1505a03a289a48cbd7a434efbaeec5055f5633a9"
@@ -9856,7 +9907,7 @@ whatwg-encoding@^1.0.5:
   dependencies:
     iconv-lite "0.4.24"
 
-whatwg-fetch@^3.6.2:
+whatwg-fetch@^3.4.1, whatwg-fetch@^3.6.2:
   version "3.6.2"
   resolved "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
   integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==

@@ -1,15 +1,22 @@
-import React from 'react'
+import { useState } from 'react'
 import { useAppDispatch } from '../../app/hooks'
 import LoginForm from '../../component/LoginForm'
 import { completeAuthentication, setEmail, setToken, startAuthentication } from '../../services/auth.api'
+import FriendlyCaptcha from '../../component/FriendlyCaptcha'
 
 export default function LoginPage() {
-
   const dispatch = useAppDispatch()
+  const [recaptchaToken, setRecaptchaToken] = useState<string|undefined>(undefined)
+
+  const doneCallback = (solution: string) => {
+    setRecaptchaToken(solution)
+  }
 
   const handleSubmitLogin = (email: string) => {
     dispatch(setEmail({email: email}))
-    dispatch(startAuthentication())
+    if (!!recaptchaToken) {
+      dispatch(startAuthentication({recaptchaToken: recaptchaToken}))
+    }
   }
 
   const handleSubmitValidation = (email: string, validationCode: string) => {
@@ -23,6 +30,7 @@ export default function LoginPage() {
       <LoginForm
         callback={handleSubmitLogin}
         validationCallback={handleSubmitValidation} />
+      <FriendlyCaptcha successCallback={doneCallback} />
     </>
   )
 }
