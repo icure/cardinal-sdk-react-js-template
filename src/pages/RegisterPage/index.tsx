@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useAppDispatch } from '../../app/hooks'
-import SignupForm from '../../component/SignupForm'
+import SignupForm from '../../components/SignupForm'
 import { completeAuthentication, setRegistrationInformation, setToken, startAuthentication } from '../../services/auth.api'
-import FriendlyCaptcha from '../../component/FriendlyCaptcha'
+import FriendlyCaptcha from '../../components/FriendlyCaptcha'
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch()
@@ -15,7 +15,7 @@ export default function RegisterPage() {
   const handleSubmitSignup = (firstName: string, lastName: string, email: string) => {
     dispatch(setRegistrationInformation({ email: email, firstName: firstName, lastName: lastName }))
     if (!!recaptchaToken) {
-      dispatch(startAuthentication({ recaptchaToken: recaptchaToken }))
+      dispatch(startAuthentication({ captchaToken: recaptchaToken }))
     }
   }
 

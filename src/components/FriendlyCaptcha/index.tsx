@@ -36,7 +36,7 @@ const FriendlyCaptcha = ({successCallback}: FriendlyCaptchaProps) => {
     }, [container]);
 
     return (
-        <div ref={container} className="frc-captcha" data-sitekey={process.env.REACT_APP_SITE_KEY} />
+        <div ref={container} className="frc-captcha" data-sitekey={process.env.FRIENDLY_CAPTCHA_SITE_KEY} />
     );
 }
 

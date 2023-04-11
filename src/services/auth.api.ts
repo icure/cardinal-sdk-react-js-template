@@ -38,7 +38,7 @@ const initialState: MedTechApiState = {
     mobilePhone: undefined,
 };
 
-export const startAuthentication = createAsyncThunk('medTechApi/startAuthentication', async (_payload: { recaptchaToken: string }, { getState }) => {
+export const startAuthentication = createAsyncThunk('medTechApi/startAuthentication', async (_payload: { captchaToken: string }, { getState }) => {
     const {
         auth: { email, firstName, lastName },
     } = getState() as { auth: MedTechApiState };
@@ -49,16 +49,14 @@ export const startAuthentication = createAsyncThunk('medTechApi/startAuthenticat
 
     const anonymousApi = await new AnonymousMedTechApiBuilder()
         .withCrypto(crypto)
-        .withICureBaseUrl(`${ICURE_CLOUD_URL}/rest/v1`)
-        .withMsgGwUrl(MSG_GW_CLOUD_URL)
-        .withMsgGwSpecId(process.env.REACT_APP_MSGGW_SPEC_ID!)
-        .withAuthProcessByEmailId(process.env.REACT_APP_AUTH_PROCESS_BY_EMAIL_ID!)
-        .withAuthProcessBySmsId(process.env.REACT_APP_AUTH_PROCESS_BY_EMAIL_ID!)
+        .withMsgGwSpecId(process.env.MSG_GW_SPEC_ID!)
+        .withAuthProcessByEmailId(process.env.EMAIL_AUTHENTICATION_PROCESS_ID!)
+        .withAuthProcessBySmsId(process.env.SMS_AUTHENTICATION_PROCESS_ID!)
         .withStorage(storage)
         .preventCookieUsage()
         .build();
 
-    const authProcess = await anonymousApi.authenticationApi.startAuthentication(process.env.REACT_APP_RECAPTCHA!, email, undefined, firstName, lastName, process.env.REACT_APP_PETRA_HCP);
+    const authProcess = await anonymousApi.authenticationApi.startAuthentication(_payload.captchaToken, email, undefined, firstName, lastName, process.env.PARENT_HEALTHCARE_PROFESSIONAL_ID);
 
     apiCache[`${authProcess.login}/${authProcess.requestId}`] = anonymousApi;
 
@@ -106,11 +104,9 @@ export const login = createAsyncThunk('medTechApi/login', async (_, { getState }
 
     const api = await new MedTechApiBuilder()
         .withCrypto(crypto)
-        .withICureBaseUrl(`${ICURE_CLOUD_URL}/rest/v1`)
-        .withMsgGwUrl(MSG_GW_CLOUD_URL)
-        .withMsgGwSpecId(process.env.REACT_APP_MSGGW_SPEC_ID!)
-        .withAuthProcessByEmailId(process.env.REACT_APP_AUTH_PROCESS_BY_EMAIL_ID!)
-        .withAuthProcessBySmsId(process.env.REACT_APP_AUTH_PROCESS_BY_SMS_ID!)
+        .withMsgGwSpecId(process.env.MSG_GW_SPEC_ID!)
+        .withAuthProcessByEmailId(process.env.EMAIL_AUTHENTICATION_PROCESS_ID!)
+        .withAuthProcessBySmsId(process.env.SMS_AUTHENTICATION_PROCESS_ID!)
         .withStorage(storage)
         .preventCookieUsage()
         .withUserName(email)

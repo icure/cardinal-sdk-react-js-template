@@ -1,31 +1,49 @@
-# iCure MedTechReactJS Template
+<p align="center">
+    <a href="https://docs.icure.com">
+        <img alt="icure-your-data-platform-for-medtech-and-ehr" src="https://icure.com/assets/icons/logo.svg">
+    </a>
+    <h1 align="center">iCure MedTech React JS Template</h1>
+</p>
 
-## What includes this template ?
-- All dependencies needed to use the [iCure MedTech Typescript SDK](https://github.com/icure/icure-medical-device-js-sdk) in a React Native App
-- First implementation of the authentication flow (Registration / Login)
-- [ReactJS](https://react.dev/)
-- [localForage](https://github.com/localForage/localForage)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-
-## Requirements
-The following tools need to be installed on your machine:
-- [NodeJS](https://nodejs.org/en)
-- [Yarn](https://yarnpkg.com/getting-started/install)
-
-## Clone the template
-To create your React Native App using the iCure MedTech template, execute the following command:
-```bash
+Start working on your e-health React JS app with iCure in a few minutes, by using our dedicated React JS template: 
+```
 git clone git@github.com:icure/icure-medical-device-react-js-boilerplate-app-template.git my-icure-app
 cd icure-reactjs-template && yarn
 ```
 
-At the end of the process, you should have something similar to this:
+Once your app is created, rename the file `.env.default` to `.env` and complete the values it contains: 
+- **MSG_GW_SPEC_ID**,
+- **EMAIL_AUTHENTICATION_PROCESS_ID** and/or **SMS_AUTHENTICATION_PROCESS_ID**,
+- **FRIENDLY_CAPTCHA_SITE_KEY**,
+- **PARENT_HEALTHCARE_PROFESSIONAL_ID** (Optional)
 
-## Start app
-Go to your new app directory `cd my-icure-app` and start the app on a web browser by running the command `yarn run start`.
+Check out our [Quick Start](https://docs.icure.com/sdks/quick-start/) in order to know what are those information and how to get them from our [Cockpit Portal](https://cockpit.icure.cloud/).
 
-Once it finishes, you should be able to see the Login Page with the logo of iCure. But before completing an authentication, you will have to :
-Complete the values of `.env` file (Provide tutorial doc for that)
+*WARNING: Without these information, you won't be able to complete an authentication*
+
+Looking for React Native template instead ? Head [here](https://github.com/icure/icure-medical-device-react-native-boilerplate-app-template).
 
 
-And that's it !
+## Requirements
+Make sure the following tools are installed on your machine:
+- [Yarn Package manager](https://yarnpkg.com/getting-started/install)
+- [NodeJS](https://nodejs.org/en)
+
+
+## Which technologies are used ? 
+- [ReactJS](https://react.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/), as a state container
+- [localForage](https://github.com/localForage/localForage), as an asynchronous Javascript storage
+- [FriendlyCaptcha](https://friendlycaptcha.com/), as a CAPTCHA solution
+
+We chosed this set of technologies, because we consider them as the most efficient ones to work with. 
+Nonetheless, you can of course work with the technologies of your choices and still integrate the iCure MedTech Typescript SDK in your React JS app.
+
+
+## What includes this template ?
+- The [iCure MedTech Typescript SDK](https://github.com/icure/icure-medical-device-js-sdk) dependency; 
+- A first implementation of the [iCure authentication flow](https://docs.icure.com/sdks/how-to/how-to-authenticate-a-user/how-to-authenticate-a-user) (Both registration and login).  
+
+
+## What's next ? 
+Check out our[MedTech Documentation](https://docs.icure.com/sdks/quick-start/react-js-quick-start) and more particularly our [How To's](https://docs.icure.com/sdks/how-to/index), in order to start implementing new functionalities inside your React JS App !

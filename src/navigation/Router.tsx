@@ -2,9 +2,9 @@ import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import AuthenticatedLayout from "../layout/AuthenticatedLayout"
 import Layout from "../layout/Layout"
-import HomePage from "../page/HomePage"
-import LoginPage from "../page/LoginPage"
-import RegisterPage from "../page/RegisterPage"
+import HomePage from "../pages/HomePage"
+import LoginPage from "../pages/LoginPage"
+import RegisterPage from "../pages/RegisterPage"
 
 export const routes = {
     home: '/home',

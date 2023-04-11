@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Navigation } from '../../component/Navigation'
+import { Navigation } from '../../components/Navigation'
 import { routes } from '../../navigation/Router';
 import { login, setEmail, setToken } from '../../services/auth.api';
 
