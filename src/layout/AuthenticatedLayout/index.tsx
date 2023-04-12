@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../app/hooks';
 import { AuthenticatedNavigation } from '../../components/AuthenticatedNavigation';
-import { Navigation } from '../../components/Navigation'
 import { routes } from '../../navigation/Router';
+import logo from '/logo.svg';
 
 function AuthenticatedLayout() {
 
@@ -21,8 +21,11 @@ function AuthenticatedLayout() {
 
   return (
     <div>
-        <AuthenticatedNavigation/>
+        <a href="https://docs.icure.com" target="_blank">
+          <img src={logo} className="logo" alt="iCure logo" />
+        </a>
         <Outlet/>
+        <AuthenticatedNavigation/>
     </div>
   )
 }

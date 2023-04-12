@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
+import { Link } from 'react-router-dom';
+import { routes } from '../../navigation/Router';
 
 interface SignupFormProps {
   callback: (firstName: string, lastName: string, email: string) => void;
@@ -35,31 +37,22 @@ const SignupForm: React.FC<SignupFormProps> = ({ callback, validationCallback })
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        First Name:
-        <input type="text" value={firstName} onChange={event => setFirstName(event.currentTarget.value)} />
-      </label>
+      <input className="register-input" type="text" placeholder='First Name' value={firstName} onChange={event => setFirstName(event.currentTarget.value)} />
       <br />
-      <label>
-        Last Name:
-        <input type="text" value={lastName} onChange={event => setLastName(event.currentTarget.value)} />
-      </label>
+      <input className="register-input" type="text" placeholder='Last Name' value={lastName} onChange={event => setLastName(event.currentTarget.value)} />
       <br />
-      <label>
-        Email:
-        <input type="email" value={email} onChange={event => setEmail(event.currentTarget.value)} />
-      </label>
+      <input className="register-input" type="email" placeholder='Email' value={email} onChange={event => setEmail(event.currentTarget.value)} />
       <br />
       {waitingForToken && (
         <>
-          <label>
-            Validation Code:
-            <input type="text" value={validationCode} onChange={event => setValidationCode(event.currentTarget.value)} maxLength={6} />
-          </label>
+          <input className="register-input" type="text" placeholder='Validation Code' value={validationCode} onChange={event => setValidationCode(event.currentTarget.value)} maxLength={6} />
           <br />
         </>
       )}
-      <input type="submit" value="Submit" />
+      <br/>
+      <input className="button-input" type="submit" value="Submit" />
+      <br/>
+      <Link to={routes.login}>Want to login ?</Link>
     </form>
   );
 }

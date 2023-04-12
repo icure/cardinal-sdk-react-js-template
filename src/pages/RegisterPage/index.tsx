@@ -6,20 +6,20 @@ import FriendlyCaptcha from '../../components/FriendlyCaptcha'
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch()
-  const [recaptchaToken, setRecaptchaToken] = useState<string | undefined>(undefined)
+  const [captchaToken, setCaptchaToken] = useState<string | undefined>(undefined)
 
   const doneCallback = (solution: string) => {
-    setRecaptchaToken(solution)
+    setCaptchaToken(solution)
   }
 
   const handleSubmitSignup = (firstName: string, lastName: string, email: string) => {
     dispatch(setRegistrationInformation({ email: email, firstName: firstName, lastName: lastName }))
-    if (!!recaptchaToken) {
-      dispatch(startAuthentication({ captchaToken: recaptchaToken }))
+    if (!!captchaToken) {
+      dispatch(startAuthentication({ captchaToken: captchaToken }))
     }
   }
 
-  const handleSubmitValidation = (email: string, validationCode: string) => {
+  const handleSubmitValidation = (_email: string, validationCode: string) => {
     dispatch(setToken({ token: validationCode }))
     dispatch(completeAuthentication())
   }

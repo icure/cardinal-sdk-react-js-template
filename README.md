@@ -8,14 +8,14 @@
 Start working on your e-health React JS app with iCure in a few minutes, by using our dedicated React JS template: 
 ```
 git clone git@github.com:icure/icure-medical-device-react-js-boilerplate-app-template.git my-icure-app
-cd icure-reactjs-template && yarn
+cd my-icure-app && yarn
 ```
 
 Once your app is created, rename the file `.env.default` to `.env` and complete the values it contains: 
-- **MSG_GW_SPEC_ID**,
-- **EMAIL_AUTHENTICATION_PROCESS_ID** and/or **SMS_AUTHENTICATION_PROCESS_ID**,
-- **FRIENDLY_CAPTCHA_SITE_KEY**,
-- **PARENT_HEALTHCARE_PROFESSIONAL_ID** (Optional)
+- **VITE_MSG_GW_SPEC_ID**,
+- **VITE_EMAIL_AUTHENTICATION_PROCESS_ID** and/or **VITE_SMS_AUTHENTICATION_PROCESS_ID**,
+- **VITE_FRIENDLY_CAPTCHA_SITE_KEY**,
+- **VITE_PARENT_HEALTHCARE_PROFESSIONAL_ID** (Optional)
 
 Check out our [Quick Start](https://docs.icure.com/sdks/quick-start/) in order to know what are those information and how to get them from our [Cockpit Portal](https://cockpit.icure.cloud/).
 
@@ -35,6 +35,7 @@ Make sure the following tools are installed on your machine:
 - [Redux Toolkit](https://redux-toolkit.js.org/), as a state container
 - [localForage](https://github.com/localForage/localForage), as an asynchronous Javascript storage
 - [FriendlyCaptcha](https://friendlycaptcha.com/), as a CAPTCHA solution
+- [Vite](https://vitejs.dev/) to generate our React project
 
 We chosed this set of technologies, because we consider them as the most efficient ones to work with. 
 Nonetheless, you can of course work with the technologies of your choices and still integrate the iCure MedTech Typescript SDK in your React JS app.

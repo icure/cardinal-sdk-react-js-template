@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Navigation } from '../../components/Navigation'
 import { routes } from '../../navigation/Router';
 import { login, setEmail, setToken } from '../../services/auth.api';
+import logo from '/logo.svg';
 
 function Layout() {
 
@@ -32,7 +32,9 @@ function Layout() {
 
   return (
     <div>
-        <Navigation/>
+        <a href="https://docs.icure.com" target="_blank">
+          <img src={logo} className="logo" alt="iCure logo" />
+        </a>
         <Outlet/>
     </div>
   )

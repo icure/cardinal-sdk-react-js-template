@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
+import { Link } from 'react-router-dom';
+import { routes } from '../../navigation/Router';
 
 interface LoginFormProps {
     callback: (email: string) => void;
@@ -33,21 +35,18 @@ const LoginForm: React.FC<LoginFormProps> = ({ callback, validationCallback }) =
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-                Email:
-                <input type="email" value={email} onChange={event => setEmail(event.currentTarget.value)} />
-            </label>
+            <input className="register-input" placeholder='Email' type="email" value={email} onChange={event => setEmail(event.currentTarget.value)} />
             <br />
             {waitingForToken && (
                 <>
-                    <label>
-                        Validation Code:
-                        <input type="text" value={validationCode} onChange={event => setValidationCode(event.currentTarget.value)} maxLength={6} />
-                    </label>
+                    <input className="register-input" placeholder='Validation Code' type="text" value={validationCode} onChange={event => setValidationCode(event.currentTarget.value)} maxLength={6} />
                     <br />
                 </>
             )}
-            <input type="submit" value="Submit" />
+            <br/>
+            <input className="button-input" type="submit" value="Submit" />
+            <br/><br/>
+            <Link to={routes.register}>Want to create an account ?</Link>
         </form>
     );
 }

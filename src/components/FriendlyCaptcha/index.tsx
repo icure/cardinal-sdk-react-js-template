@@ -21,12 +21,16 @@ const FriendlyCaptcha = ({successCallback}: FriendlyCaptchaProps) => {
 
     useEffect(() => {
         if (!widget.current && container.current) {
-            // @ts-ignore
-            widget.current = new WidgetInstance(container.current, {
-                startMode: "auto",
+            const friendlyCaptcha = new WidgetInstance(container.current, {
                 doneCallback: doneCallback,
-                errorCallback: errorCallback
+                errorCallback: errorCallback,
+                sitekey: import.meta.env.VITE_FRIENDLY_CAPTCHA_SITE_KEY,
             });
+
+            friendlyCaptcha.start();
+            
+            // @ts-ignore
+            widget.current = friendlyCaptcha;
         }
 
         return () => {
@@ -34,9 +38,9 @@ const FriendlyCaptcha = ({successCallback}: FriendlyCaptchaProps) => {
             if (widget.current != undefined) widget.current.reset();
         }
     }, [container]);
-
+    
     return (
-        <div ref={container} className="frc-captcha" data-sitekey={process.env.FRIENDLY_CAPTCHA_SITE_KEY} />
+        <div ref={container} className="frc-captcha" data-sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITE_KEY} />
     );
 }
 
