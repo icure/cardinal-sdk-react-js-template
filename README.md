@@ -11,11 +11,14 @@ git clone git@github.com:icure/icure-medical-device-react-js-boilerplate-app-tem
 cd my-icure-app && yarn
 ```
 
-Once your app is created, rename the file `.env.default` to `.env` and complete the values it contains: 
+Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains: 
 - **VITE_MSG_GW_SPEC_ID**,
 - **VITE_EMAIL_AUTHENTICATION_PROCESS_ID** and/or **VITE_SMS_AUTHENTICATION_PROCESS_ID**,
 - **VITE_FRIENDLY_CAPTCHA_SITE_KEY**,
 - **VITE_PARENT_HEALTHCARE_PROFESSIONAL_ID** (Optional)
+
+And start your React app by executing `yarn dev`. 
+
 
 Check out our [Quick Start](https://docs.icure.com/sdks/quick-start/) in order to know what are those information and how to get them from our [Cockpit Portal](https://cockpit.icure.cloud/).
 
