@@ -29,8 +29,8 @@ Looking for React Native template instead ? Head [here](https://github.com/icure
 
 ## Requirements
 Make sure the following tools are installed on your machine:
+- [NodeJS](https://nodejs.org/en) (Node 16 + at least)
 - [Yarn Package manager](https://yarnpkg.com/getting-started/install)
-- [NodeJS](https://nodejs.org/en)
 
 
 ## Which technologies are used ? 
