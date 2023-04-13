@@ -24,7 +24,7 @@ const FriendlyCaptcha = ({successCallback}: FriendlyCaptchaProps) => {
             const friendlyCaptcha = new WidgetInstance(container.current, {
                 doneCallback: doneCallback,
                 errorCallback: errorCallback,
-                sitekey: import.meta.env.VITE_FRIENDLY_CAPTCHA_SITE_KEY,
+                sitekey: process.env.REACT_APP_FRIENDLY_CAPTCHA_SITE_KEY,
             });
 
             friendlyCaptcha.start();
@@ -40,7 +40,7 @@ const FriendlyCaptcha = ({successCallback}: FriendlyCaptchaProps) => {
     }, [container]);
     
     return (
-        <div ref={container} className="frc-captcha" data-sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITE_KEY} />
+        <div ref={container} className="frc-captcha" data-sitekey={process.env.REACT_APP_FRIENDLY_CAPTCHA_SITE_KEY} />
     );
 }
 

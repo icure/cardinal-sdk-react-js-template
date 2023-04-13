@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../app/hooks';
 import { AuthenticatedNavigation } from '../../components/AuthenticatedNavigation';
 import { routes } from '../../navigation/Router';
-import logo from '/logo.svg';
+import logo from '../../logo.svg';
 
 function AuthenticatedLayout() {
 
