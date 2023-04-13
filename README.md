@@ -7,7 +7,7 @@
 
 Start working on your e-health React JS app with iCure in a few minutes, by using our dedicated React JS template: 
 ```
-yarn create react-app my-icure-medtech-app --template cra-template-icure-medtech
+yarn create react-app my-icure-medtech-app --template @icure/cra-template-icure-medtech
 ```
 
 Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains: 
