@@ -11,10 +11,10 @@ yarn create react-app my-icure-medtech-app --template @icure/cra-template-icure-
 ```
 
 Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains: 
-- **REACT_APP_MSG_GW_SPEC_ID**,
+- **REACT_APP_EXTERNAL_SERVICES_SPEC_ID**,
 - **REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID** and/or **REACT_APP_SMS_AUTHENTICATION_PROCESS_ID**,
-- **REACT_APP_FRIENDLY_CAPTCHA_SITE_KEY**,
-- **REACT_APP_PARENT_HEALTHCARE_PROFESSIONAL_ID** (Optional)
+- **REACT_APP_PARENT_ORGANISATION_ID**,
+- **REACT_APP_FRIENDLY_CAPTCHA_SITE_KEY**
 
 And start your React app by executing 
 ```
