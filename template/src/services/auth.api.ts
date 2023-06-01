@@ -49,16 +49,14 @@ export const startAuthentication = createAsyncThunk('medTechApi/startAuthenticat
 
     const anonymousApi = await new AnonymousMedTechApiBuilder()
         .withCrypto(crypto)
-        .withMsgGwSpecId(process.env.REACT_APP_MSG_GW_SPEC_ID!)
+        .withMsgGwSpecId(process.env.REACT_APP_EXTERNAL_SERVICES_SPEC_ID!)
         .withAuthProcessByEmailId(process.env.REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID!)
         .withAuthProcessBySmsId(process.env.REACT_APP_SMS_AUTHENTICATION_PROCESS_ID!)
         .withStorage(storage)
         .preventCookieUsage()
         .build();
 
-    console.log(`FirstName is ${firstName} and lastName is ${lastName} and undeined is ${undefined}`);
-
-    const authProcess = await anonymousApi.authenticationApi.startAuthentication(_payload.captchaToken, email, undefined, firstName, lastName, process.env.REACT_APP_PARENT_HEALTHCARE_PROFESSIONAL_ID, undefined, undefined, 'friendly-captcha');
+    const authProcess = await anonymousApi.authenticationApi.startAuthentication(_payload.captchaToken, email, undefined, firstName, lastName, process.env.REACT_APP_PARENT_ORGANISATION_ID, undefined, undefined, 'friendly-captcha');
 
     apiCache[`${authProcess.login}/${authProcess.requestId}`] = anonymousApi;
 
@@ -106,7 +104,7 @@ export const login = createAsyncThunk('medTechApi/login', async (_, { getState }
 
     const api = await new MedTechApiBuilder()
         .withCrypto(crypto)
-        .withMsgGwSpecId(process.env.REACT_APP_MSG_GW_SPEC_ID!)
+        .withMsgGwSpecId(process.env.REACT_APP_EXTERNAL_SERVICES_SPEC_ID!)
         .withAuthProcessByEmailId(process.env.REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID!)
         .withAuthProcessBySmsId(process.env.REACT_APP_SMS_AUTHENTICATION_PROCESS_ID!)
         .withStorage(storage)
