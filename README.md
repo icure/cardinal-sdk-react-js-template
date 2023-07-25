@@ -2,12 +2,12 @@
     <a href="https://docs.icure.com">
         <img alt="icure-your-data-platform-for-medtech-and-ehr" src="https://icure.com/assets/icons/logo.svg">
     </a>
-    <h1 align="center">iCure MedTech React JS Template</h1>
+    <h1 align="center">iCure EHR-Lite React JS Template</h1>
 </p>
 
 Start working on your e-health React JS app with iCure in a few minutes, by using our dedicated React JS template: 
 ```
-yarn create react-app my-icure-medtech-app --template @icure/cra-template-icure-medtech
+yarn create react-app my-icure-ehr-app --template @icure/cra-template-icure-ehr-lite
 ```
 
 Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains: 
@@ -48,9 +48,9 @@ Nonetheless, you can of course work with the technologies of your choices and st
 
 
 ## What includes this template ?
-- The [iCure MedTech Typescript SDK](https://github.com/icure/icure-medical-device-js-sdk) dependency; 
+- The [iCure EHR-Lite Typescript SDK](https://github.com/icure/icure-typescript-sdks/tree/main/packages/ehr-lite) dependency; 
 - A first implementation of the [iCure authentication flow](https://docs.icure.com/sdks/how-to/how-to-authenticate-a-user/how-to-authenticate-a-user) (Both registration and login).  
 
 
 ## What's next ? 
-Check out our[MedTech Documentation](https://docs.icure.com/sdks/quick-start/react-js-quick-start) and more particularly our [How To's](https://docs.icure.com/sdks/how-to/index), in order to start implementing new functionalities inside your React JS App !
+Check out our [EHR-Lite Documentation](https://docs.icure.com/sdks/quick-start/react-js-quick-start) and more particularly our [How To's](https://docs.icure.com/sdks/how-to/index), in order to start implementing new functionalities inside your React JS App !

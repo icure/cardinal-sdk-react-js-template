@@ -1,23 +1,25 @@
 {
-  "name": "@icure/cra-template-icure-medtech",
+  "name": "@icure/cra-template-icure-ehr-lite",
   "main": "template.json",
   "version": "0.0.1",
   "keywords": [
     "icure",
-    "medtech",
+    "ehr",
+    "ehr-lite",
+    "medical",
     "react"
   ],
   "description": "The base template to create your iCure React JS App.",
   "files": ["template", "template.json"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/icure/icure-medical-device-react-js-boilerplate-app-template"
+    "url": "https://github.com/icure/icure-ehr-lite-react-js-boilerplate-app-template"
   },
   "license": "MIT",
   "engines": {
     "node": ">=16"
   },
   "bugs": {
-    "url": "https://github.com/icure/icure-medical-device-react-js-boilerplate-app-template/issues"
+    "url": "https://github.com/icure/icure-ehr-lite-react-js-boilerplate-app-template/issues"
   }
 }
