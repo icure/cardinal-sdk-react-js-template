@@ -1,7 +1,7 @@
 {
   "name": "@icure/cra-template-icure-ehr-lite",
   "main": "template.json",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "icure",
     "ehr",

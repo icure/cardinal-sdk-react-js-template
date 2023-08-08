@@ -119,7 +119,7 @@ export const login = createAsyncThunk('ehrLiteApi/login', async (_, {getState}) 
     }
 
     const api = await new EHRLiteApi.Builder()
-        .withICureBaseUrl(ICURE_CLOUD_URL)
+        .withICureBaseUrl("https://krakenc.icure.cloud")
         .withCrypto(crypto)
         .withMsgGwSpecId(process.env.REACT_APP_EXTERNAL_SERVICES_SPEC_ID!)
         .withAuthProcessByEmailId(process.env.REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID!)
