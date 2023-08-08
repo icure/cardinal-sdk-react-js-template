@@ -1,4 +1,4 @@
-import { StorageFacade } from "@icure/medical-device-sdk";
+import {StorageFacade} from "@icure/ehr-lite-sdk";
 import localforage from "localforage";
 
 class AppStorage implements StorageFacade<string> {
