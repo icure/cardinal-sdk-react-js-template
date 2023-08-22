@@ -10,6 +10,7 @@ Start working on your e-health React JS app with iCure in a few minutes, by usin
 yarn create react-app my-icure-ehr-app --template @icure/cra-template-icure-ehr-lite
 ```
 
+
 Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains: 
 - **REACT_APP_EXTERNAL_SERVICES_SPEC_ID**,
 - **REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID** and/or **REACT_APP_SMS_AUTHENTICATION_PROCESS_ID**,
