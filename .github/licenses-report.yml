@@ -1,8 +1,7 @@
 name: Licenses report
 on:
   push:
-    tags:
-      - '*'
+    branches: [main]
   workflow_dispatch:
 
 jobs:
