@@ -1,7 +1,7 @@
 {
   "name": "@icure/cra-template-icure-ehr-lite",
   "main": "template.json",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "keywords": [
     "icure",
     "ehr",
@@ -10,7 +10,10 @@
     "react"
   ],
   "description": "The base template to create your iCure React JS App.",
-  "files": ["template", "template.json"],
+  "files": [
+    "template",
+    "template.json"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/icure/icure-ehr-lite-react-js-boilerplate-app-template"
