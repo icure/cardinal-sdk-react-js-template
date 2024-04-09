@@ -5,10 +5,10 @@ import {
     AnonymousEHRLiteApi,
     AuthenticationProcess,
     EHRLiteApi,
-    ICURE_CLOUD_URL,
-    SimpleCryptoStrategies,
     User
 } from "@icure/ehr-lite-sdk";
+import { SimpleEHRLiteCryptoStrategies } from '@icure/ehr-lite-sdk/services/EHRLiteCryptoStrategies'
+import {RecaptchaType} from "@icure/typescript-common/models/RecaptchaType.model";
 
 const apiCache: { [key: string]: EHRLiteApi | AnonymousEHRLiteApi } = {};
 
@@ -57,15 +57,21 @@ export const startAuthentication = createAsyncThunk('ehrLiteApi/startAuthenticat
 
     const anonymousApi = await new AnonymousEHRLiteApi
         .Builder()
-        .withICureBaseUrl("https://krakenc.icure.cloud")
+        .withICureBaseUrl("https://api.icure.cloud")
         .withCrypto(crypto)
         .withMsgGwSpecId(process.env.REACT_APP_EXTERNAL_SERVICES_SPEC_ID!)
         .withAuthProcessByEmailId(process.env.REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID!)
         .withStorage(storage)
-        .withCryptoStrategies(new SimpleCryptoStrategies([]))
+        .withCryptoStrategies(new SimpleEHRLiteCryptoStrategies([]))
         .build();
 
-    const authProcess = await anonymousApi.authenticationApi.startAuthentication(_payload.captchaToken, email, undefined, firstName, lastName, process.env.REACT_APP_PARENT_ORGANISATION_ID, undefined, 6, 'friendly-captcha');
+    const authProcess = await anonymousApi.authenticationApi.startAuthentication({
+        recaptcha: _payload.captchaToken,
+        email,
+        firstName,
+        lastName,
+        recaptchaType: 'friendly-captcha'
+    });
 
     apiCache[`${authProcess.login}/${authProcess.requestId}`] = anonymousApi;
 
@@ -119,14 +125,14 @@ export const login = createAsyncThunk('ehrLiteApi/login', async (_, {getState}) 
     }
 
     const api = await new EHRLiteApi.Builder()
-        .withICureBaseUrl("https://krakenc.icure.cloud")
+        .withICureBaseUrl("https://api.icure.cloud")
         .withCrypto(crypto)
         .withMsgGwSpecId(process.env.REACT_APP_EXTERNAL_SERVICES_SPEC_ID!)
         .withAuthProcessByEmailId(process.env.REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID!)
         .withStorage(storage)
         .withUserName(email)
         .withPassword(token)
-        .withCryptoStrategies(new SimpleCryptoStrategies([]))
+        .withCryptoStrategies(new SimpleEHRLiteCryptoStrategies([]))
         .build();
 
     const user = await api.userApi.getLogged();
@@ -197,4 +203,3 @@ export const api = createSlice({
 
 
 export const {setRegistrationInformation, setToken, setEmail, setUser, resetCredentials} = api.actions;
-
