@@ -1,31 +1,31 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../../app/hooks';
-import { AuthenticatedNavigation } from '../../components/AuthenticatedNavigation';
-import { routes } from '../../navigation/Router';
-import logo from '../../logo.svg';
 
+import { useAppSelector } from '../../core/hooks'
+import { routes } from '../../navigation/Router'
+import { createSelector } from '@reduxjs/toolkit'
+import { EHRLiteApiState } from '../../core/services/auth.api'
+
+const reduxSelector = createSelector(
+  (state: { ehrLiteApi: EHRLiteApiState }) => state.ehrLiteApi,
+  (ehrLiteApi: EHRLiteApiState) => ({
+    online: ehrLiteApi.online,
+  }),
+)
 function AuthenticatedLayout() {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate()
+  const { online } = useAppSelector(reduxSelector)
 
-    const { online } = useAppSelector(state => ({
-        ...state.auth,
-    }));
-
-    useEffect(() => {
-        if(!online) {
-            navigate(routes.login)
-        }
-    }, [online])
+  useEffect(() => {
+    if (!online) {
+      navigate(routes.login)
+    }
+  }, [online])
 
   return (
     <div>
-        <a href="https://docs.icure.com" target="_blank">
-          <img src={logo} className="logo" alt="iCure logo" />
-        </a>
-        <Outlet/>
-        <AuthenticatedNavigation/>
+      <Outlet />
     </div>
   )
 }
