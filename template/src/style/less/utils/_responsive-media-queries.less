@@ -1,0 +1,28 @@
+/* Responsive media queries:
+ ========================================================================== */
+
+@sm: 576px;
+@md: 768px;
+@lg: 1000px;
+@xl: 1200px;
+@xl2: 1300px;
+@xxl: 1400px;
+@xxxl: 1800px;
+
+.media-breakpoint-up(@start, @rules) {
+  @media screen and (min-width: @start) {
+    @rules();
+  }
+}
+
+.media-breakpoint-down(@end, @rules) {
+  @media screen and (max-width: calc(@end - 1px)) {
+    @rules();
+  }
+}
+
+.media-breakpoint-between(@start, @end, @rules) {
+  @media (min-width: @start) and (max-width: calc(@end - 1px)) {
+    @rules();
+  }
+}

@@ -1,0 +1,35 @@
+@import '../../style/less/index';
+
+.Dashboard {
+  min-width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+
+  &__content{
+    width: 95%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+
+    background-color: @blue-200;
+    border: 1px dashed @blue-700;
+    border-radius: 20px;
+    padding: 50px;
+
+    p {
+      text-align: center;
+      font-size: 16px;
+    }
+
+  }
+}
