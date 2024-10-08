@@ -1,8 +1,7 @@
-![Manage app btn](./src/assets/logo_with_subtitle.svg)
+![Cardinal logo](./src/assets/logo_for_readme.svg)
 
-<a href="https://cardinalsdk.com/en">
-    <h1>CardinalSDK React JS Template</h1>
-</a>
+<h1>CardinalSDK React JS Template</h1>
+<a href="https://cardinalsdk.com/en" target="_blank">CardinalSDK website</a>
 
 
 Start working on your e-health React JS app with Cardinal in a few minutes, by using our dedicated React JS template: 
