@@ -1,9 +1,8 @@
-<p align="center">
+<p>
     <a href="https://docs.icure.com">
         <img alt="icure-your-data-platform-for-medtech-and-ehr" src="https://icure.com/assets/icons/logo.svg">
     </a>
-    <h1 align="center">iCure EHR-Lite React JS Template</h1>
-</p>
+    <h1>iCure EHR-Lite React JS Template</h1>
 
 Start working on your e-health React JS app with iCure in a few minutes, by using our dedicated React JS template:
 ```
