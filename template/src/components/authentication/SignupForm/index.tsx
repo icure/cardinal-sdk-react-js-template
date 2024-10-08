@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Input, Button, Form, Checkbox } from 'antd'
+import { Button, Form, Input } from 'antd'
 
 import { routes } from '../../../navigation/Router'
 import FriendlyCaptcha from '../FriendlyCaptcha'
@@ -58,33 +58,6 @@ const SignupForm: React.FC<SignupFormProps> = ({ state, submitEmailForTokenReque
             </Form.Item>
           )}
         </div>
-        <Form.Item
-          name="termsOfUse"
-          valuePropName="checked"
-          key="termsOfUse"
-          className="w-100 checkbox-item"
-          rules={[
-            {
-              required: true,
-              validator: (_, value) => (value ? Promise.resolve() : Promise.reject(new Error('Before registering, please read and accept our terms of use and privacy policy'))),
-            },
-          ]}
-        >
-          <Checkbox>
-            <div className="auth-form__textHelper">
-              <p>
-                I have read and agree with{' '}
-                <Link className="link" to="#">
-                  Terms of use
-                </Link>{' '}
-                &{' '}
-                <Link className="link" to="#">
-                  Privacy Policy
-                </Link>
-              </p>
-            </div>
-          </Checkbox>
-        </Form.Item>
         <Button type="primary" size="large" htmlType="submit" disabled={(state === 'initialised' && !captchaToken) || state === 'loading'}>
           {state === 'waitingForToken' ? 'Register' : 'Receive a one time code'}
         </Button>

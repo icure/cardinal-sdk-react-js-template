@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../core/hooks'
 import SignupForm from '../../../components/authentication/SignupForm'
-import { completeAuthentication, EHRLiteApiState, setRegistrationInformation, setToken, setWaitingForToken, startAuthentication } from '../../../core/services/auth.api'
-import logo from '../../../assets/logo_horizontal.svg'
+import { CardinalApiState, completeAuthentication, setRegistrationInformation, setToken, setWaitingForToken, startAuthentication } from '../../../core/services/auth.api'
+import logo from '../../../assets/logo_with_subtitle.svg'
 import '../index.css'
 import { createSelector } from '@reduxjs/toolkit'
 
 const reduxSelector = createSelector(
-  (state: { ehrLiteApi: EHRLiteApiState }) => state.ehrLiteApi,
-  (ehrLiteApi: EHRLiteApiState) => ({
-    waitingForToken: ehrLiteApi.waitingForToken,
-    loginProcessStarted: ehrLiteApi.loginProcessStarted,
+  (state: { cardinalApi: CardinalApiState }) => state.cardinalApi,
+  (cardinalApi: CardinalApiState) => ({
+    waitingForToken: cardinalApi.waitingForToken,
+    loginProcessStarted: cardinalApi.loginProcessStarted,
   }),
 )
 export default function RegisterPage() {

@@ -68,18 +68,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ state, submitEmailForTokenRequest
             </Form.Item>
           )}
         </div>
-        <div className="auth-form__textHelper">
-          <p>
-            By login, you accept our{' '}
-            <Link className="link" to="#">
-              Terms of use
-            </Link>{' '}
-            and{' '}
-            <Link className="link" to="#">
-              Privacy policy
-            </Link>
-          </p>
-        </div>
         <Button type="primary" size="large" htmlType="submit" disabled={(state === 'initialised' && !captchaToken) || state === 'loading'}>
           {state === 'waitingForToken' ? 'Log in' : 'Receive a one time code'}
         </Button>

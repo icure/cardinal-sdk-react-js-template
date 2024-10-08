@@ -2,15 +2,15 @@ import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../core/hooks'
 import { routes } from '../../navigation/Router'
-import { EHRLiteApiState, login, setEmail, setToken } from '../../core/services/auth.api'
+import { CardinalApiState, login, setEmail, setToken } from '../../core/services/auth.api'
 import { createSelector } from '@reduxjs/toolkit'
 import { AppState } from '../../core/app'
 
-const selectRestApiData = (state: { ehrLiteApi: EHRLiteApiState }) => state.ehrLiteApi
+const selectRestApiData = (state: { cardinalApi: CardinalApiState }) => state.cardinalApi
 const selectAppData = (state: { app: AppState }) => state.app
 
-const combinedSelector = createSelector([selectRestApiData, selectAppData], (ehrLiteApi: EHRLiteApiState, app: AppState) => ({
-  online: ehrLiteApi.online,
+const combinedSelector = createSelector([selectRestApiData, selectAppData], (cardinalApi: CardinalApiState, app: AppState) => ({
+  online: cardinalApi.online,
   lsUsername: app?.savedCredentials?.login,
   lsToken: app?.savedCredentials?.token,
 }))
