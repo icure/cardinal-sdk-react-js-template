@@ -2,9 +2,9 @@
 
 <h1>CardinalSDK React JS Template</h1>
 <a href="https://cardinalsdk.com/en" target="_blank">CardinalSDK website</a>
+<hr/>
 
-
-Start working on your e-health React JS app with Cardinal in a few minutes, by using our dedicated React JS template: 
+Start working on your e-health React JS app with Cardinal in a few minutes, by using our dedicated React JS template:
 
 ```
 yarn create react-app my-health-tech-app --template @icure/cra-template-icure-ehr-lite
