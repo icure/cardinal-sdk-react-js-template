@@ -1,14 +1,12 @@
-<p>
-    <a href="https://docs.icure.com">
-        <img alt="icure-your-data-platform-for-medtech-and-ehr" src="https://icure.com/assets/icons/logo.svg">
-    </a>
-    <h1>iCure EHR-Lite React JS Template</h1>
+![Cardinal logo](./src/assets/logo_for_readme.svg)
 
-Start working on your e-health React JS app with iCure in a few minutes, by using our dedicated React JS template:
-```
-yarn create react-app my-icure-ehr-app --template @icure/cra-template-icure-ehr-lite
-```
+<h1>CardinalSDK React JS Template</h1>
 
+Start working on your e-health React JS app with Cardinal in a few minutes, by using our dedicated React JS template:
+
+```
+yarn create react-app my-health-tech-app --template @icure/cra-template-icure-ehr-lite
+```
 
 Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains:
 - **REACT_APP_EXTERNAL_SERVICES_SPEC_ID**,
@@ -17,12 +15,13 @@ Once your app is created, rename the file `.env.default` to `.env`, complete the
 - **REACT_APP_FRIENDLY_CAPTCHA_SITE_KEY**
 
 And start your React app by executing
+
 ```
-cd my-icure-ehr-app && yarn start
+cd my-health-tech-app && yarn start
 ```
 
 
-Check out our [Quick Start](https://docs.icure.com/sdks/quick-start/) in order to know what are those information and how to get them from our [Cockpit Portal](https://cockpit.icure.cloud/).
+Check out our [Quick Start](https://docs.icure.com/how-to/index) in order to know what are those information and how to get them from our [Cockpit Portal](https://cockpit.icure.cloud/).
 
 *WARNING: Without these information, you won't be able to complete an authentication*
 
@@ -44,13 +43,18 @@ Make sure the following tools are installed on your machine:
 - [FriendlyCaptcha](https://friendlycaptcha.com/), as a CAPTCHA solution
 
 We chosed this set of technologies, because we consider them as the most efficient ones to work with.
-Nonetheless, you can of course work with the technologies of your choices and still integrate the iCure EhrLite Typescript SDK in your React JS app.
+Nonetheless, you can of course work with the technologies of your choices and still integrate the iCure MedTech Typescript SDK in your React JS app.
 
 
 ## What includes this template ?
-- The [iCure EHR-Lite Typescript SDK](https://github.com/icure/icure-typescript-sdks/tree/main/packages/ehr-lite) dependency;
-- A first implementation of the [iCure authentication flow](https://docs.icure.com/sdks/how-to/how-to-authenticate-a-user/how-to-authenticate-a-user) (Both registration and login).
+- The [Cardinal SDK](https://github.com/icure) dependency;
+- A first implementation of the [authentication flow](https://docs.icure.com/how-to/initialize-the-sdk/), both registration and login.
 
 
 ## What's next ?
-Check out our [EHR-Lite Documentation](https://docs.icure.com/sdks/quick-start/react-js-quick-start) and more particularly our [How To's](https://docs.icure.com/sdks/how-to/index), in order to start implementing new functionalities inside your React JS App !
+Check out our [Documentation](https://docs.icure.com/) and more particularly our [How To's](https://docs.icure.com/how-to/index), in order to start implementing new functionalities inside your React JS App !
+
+
+## Contact us:
+- [Cardinal website](https://cardinalsdk.com/en)
+- [Help Centre](https://icure.atlassian.net/servicedesk/customer/user/login?destination=portals)

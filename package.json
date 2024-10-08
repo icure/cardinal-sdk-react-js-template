@@ -1,28 +1,62 @@
 {
-  "name": "@icure/cra-template-icure-ehr-lite",
-  "main": "template.json",
-  "version": "0.0.4",
-  "keywords": [
-    "icure",
-    "ehr",
-    "ehr-lite",
-    "medical",
-    "react"
-  ],
-  "description": "The base template to create your iCure React JS App.",
-  "files": [
-    "template",
-    "template.json"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/icure/icure-ehr-lite-react-js-boilerplate-app-template"
+  "name": "doctor-app-manual",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others \"less-watch-compiler --config less-watcher.config.json\" \"react-scripts start\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=16"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "bugs": {
-    "url": "https://github.com/icure/icure-ehr-lite-react-js-boilerplate-app-template/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "packageManager": "yarn@4.0.1",
+  "dependencies": {
+    "@icure/cardinal-sdk": "^1.0.0-RC.1",
+    "@reduxjs/toolkit": "^1.8.1",
+    "antd": "^5.14.1",
+    "friendly-challenge": "^0.9.8",
+    "localforage": "^1.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.10.0",
+    "react-scripts": "5.0.1",
+    "redux-persist": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.30",
+    "@types/react-dom": "^18.2.14",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "less": "^4.1.2",
+    "less-watch-compiler": "^1.16.3",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.1",
+    "pretty-quick": "^3.1.3",
+    "typescript": "^4.9.5"
   }
 }

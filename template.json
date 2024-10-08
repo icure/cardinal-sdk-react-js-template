@@ -1,5 +1,11 @@
 {
     "package": {
+      "scripts": {
+        "start": "concurrently --kill-others \"less-watch-compiler --config less-watcher.config.json\" \"react-scripts start\"",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+      },
       "dependencies": {
         "@icure/cardinal-sdk": "^1.0.0-RC.1",
         "@reduxjs/toolkit": "^1.8.1",
