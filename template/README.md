@@ -1,8 +1,6 @@
 ![Cardinal logo](./src/assets/logo_for_readme.svg)
 
 <h1>CardinalSDK React JS Template</h1>
-<a href="https://cardinalsdk.com/en" target="_blank">CardinalSDK website</a>
-<hr/>
 
 Start working on your e-health React JS app with Cardinal in a few minutes, by using our dedicated React JS template:
 
@@ -56,4 +54,7 @@ Nonetheless, you can of course work with the technologies of your choices and st
 ## What's next ?
 Check out our [Documentation](https://docs.icure.com/) and more particularly our [How To's](https://docs.icure.com/how-to/index), in order to start implementing new functionalities inside your React JS App !
 
-*Cardinal is a Backend as a service (BaaS) product created by iCure.*
+
+## Contact us:
+- [Cardinal website](https://cardinalsdk.com/en)
+- [Help Centre](https://icure.atlassian.net/servicedesk/customer/user/login?destination=portals)
