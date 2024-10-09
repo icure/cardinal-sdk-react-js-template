@@ -1,5 +1,5 @@
 {
-  "name": "cra-template-typescript-cardinal-sdk",
+  "name": "@icure/cra-template-typescript-cardinal-sdk",
   "version": "0.0.1",
   "private": true,
   "scripts": {
