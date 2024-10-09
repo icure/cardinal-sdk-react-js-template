@@ -1,6 +1,6 @@
 {
-  "name": "doctor-app-manual",
-  "version": "0.1.0",
+  "name": "@icure/cra-template-typescript-cardinal-sdk",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "concurrently --kill-others \"less-watch-compiler --config less-watcher.config.json\" \"react-scripts start\"",
