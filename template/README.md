@@ -1,11 +1,11 @@
-![Cardinal logo](./src/assets/logo_for_readme.svg)
+![Cardinal logo](./src/assets/cardinal_logo.svg)
 
 <h1>CardinalSDK React JS Template</h1>
 
 Start working on your e-health React JS app with Cardinal in a few minutes, by using our dedicated React JS template:
 
 ```
-yarn create react-app my-health-tech-app --template @icure/cra-template-icure-ehr-lite
+yarn create react-app my-health-tech-app --template @icure/cra-template-typescript-cardinal-sdk
 ```
 
 Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains:
