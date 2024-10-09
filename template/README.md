@@ -6,7 +6,6 @@ Start working on your e-health React JS app with Cardinal in a few minutes, by u
 
 ```
 yarn create react-app my-health-tech-app --template @icure/cra-template-typescript-cardinal-sdk
-
 ```
 
 Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains:
