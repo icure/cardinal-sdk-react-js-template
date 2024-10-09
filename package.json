@@ -1,7 +1,6 @@
 {
   "name": "@icure/cra-template-typescript-cardinal-sdk",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "start": "concurrently --kill-others \"less-watch-compiler --config less-watcher.config.json\" \"react-scripts start\"",
     "build": "react-scripts build",
