@@ -310,11 +310,11 @@ export const startAuthentication = createAsyncThunk('cardinalApi/startAuthentica
 
   try {
     const authenticationStep = await CardinalBaseSdk.initializeWithProcess(
-      process.env.REACT_APP_APPLICATION_ID,
+      import.meta.env.VITE_APPLICATION_ID,
       ICURE_CLOUD_URL,
       MSG_GW_URL,
-      process.env.REACT_APP_EXTERNAL_SERVICES_SPEC_ID!,
-      process.env.REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID!,
+      import.meta.env.VITE_EXTERNAL_SERVICES_SPEC_ID!,
+      import.meta.env.VITE_EMAIL_AUTHENTICATION_PROCESS_ID!,
       AuthenticationProcessTelecomType.Email,
       email,
       new CaptchaOptions.Kerberus.Computed({ solution: _payload.captchaSolution }),
@@ -382,7 +382,7 @@ export const login = createAsyncThunk('cardinalApi/login', async (_, { getState,
 
   try {
     const baseSdk = await CardinalBaseSdk.initialize(
-      process.env.REACT_APP_APPLICATION_ID,
+      import.meta.env.VITE_APPLICATION_ID,
       ICURE_CLOUD_URL,
       new AuthenticationMethod.UsingCredentials.UsernamePassword(email, shortToken),
       baseSdkOptions(),

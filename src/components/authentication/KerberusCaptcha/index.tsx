@@ -3,7 +3,7 @@ import { Progress } from 'antd'
 import { Challenge, resolveChallenge, Solution } from '@icure/cardinal-sdk'
 
 const MSG_GW_URL = 'https://msg-gw.icure.cloud'
-const SPEC_ID = process.env.REACT_APP_EXTERNAL_SERVICES_SPEC_ID
+const SPEC_ID = import.meta.env.VITE_EXTERNAL_SERVICES_SPEC_ID
 
 type KerberusCaptchaProps = {
   successCallback: (solution: Solution) => void
@@ -16,7 +16,7 @@ const KerberusCaptcha = ({ successCallback, refreshCounter = 0 }: KerberusCaptch
 
   useEffect(() => {
     if (!SPEC_ID) {
-      console.error('REACT_APP_EXTERNAL_SERVICES_SPEC_ID is not set; cannot resolve Kerberus challenge.')
+      console.error('VITE_EXTERNAL_SERVICES_SPEC_ID is not set; cannot resolve Kerberus challenge.')
       return
     }
     const requestId = ++requestIdRef.current

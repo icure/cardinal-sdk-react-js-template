@@ -1,60 +1,105 @@
-![Cardinal logo](./cardinal_logo.svg)
+![Cardinal logo](./src/assets/cardinal_logo.svg)
 
-<h1>CardinalSDK React JS Template</h1>
+<h1>My Cardinal-powered e-health React app</h1>
 
-Start working on your e-health React JS app with Cardinal in a few minutes, by using our dedicated React JS template:
+A Vite + React + TypeScript starter for the [Cardinal SDK](https://docs.icure.com/). It comes with a working email + one-time-code authentication flow, plus the Redux/storage plumbing you'd otherwise spend a day wiring up yourself.
 
-```
-yarn create react-app my-health-tech-app --template @icure/cra-template-typescript-cardinal-sdk
-```
+For the architectural tour (auth state machine, encryption model, where to add new features), see [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 
-Once your app is created, rename the file `.env.default` to `.env`, complete the values it contains:
-- **REACT_APP_EXTERNAL_SERVICES_SPEC_ID**,
-- **REACT_APP_EMAIL_AUTHENTICATION_PROCESS_ID** and/or **REACT_APP_SMS_AUTHENTICATION_PROCESS_ID**,
-- **REACT_APP_PARENT_ORGANISATION_ID**,
-- **REACT_APP_FRIENDLY_CAPTCHA_SITE_KEY**
 
-And start your React app by executing
+## 1. Scaffold a new project
 
 ```
-cd my-health-tech-app && yarn start
+npx degit icure/cardinal-sdk-react-js-template my-health-tech-app
+cd my-health-tech-app
+yarn install
+```
+
+`degit` makes a fresh checkout with no git history. Initialise your own:
+
+```
+git init && git add . && git commit -m "Initial commit"
 ```
 
 
-Check out our [Quick Start](https://docs.icure.com/how-to/index) in order to know what are those information and how to get them from our [Cockpit Portal](https://cockpit.icure.cloud/).
+## 2. Configure your environment
 
-*WARNING: Without these information, you won't be able to complete an authentication*
+Copy `.env.default` to `.env` and fill in the values:
 
-Not familiar with `create-react-app` ? Have a look to their [repository](https://github.com/facebook/create-react-apphttps://github.com/facebook/create-react-app).
+```
+cp .env.default .env
+```
 
-Looking for React Native template instead ? Head [here](https://github.com/icure/icure-medical-device-react-native-boilerplate-app-template).
+- **VITE_APPLICATION_ID** — your Cardinal project / application identifier.
+- **VITE_EXTERNAL_SERVICES_SPEC_ID** — identifier the message gateway uses to dispatch the one-time-code email.
+- **VITE_EMAIL_AUTHENTICATION_PROCESS_ID** (and/or **VITE_SMS_AUTHENTICATION_PROCESS_ID**) — identifies which authentication process template to run.
+- **VITE_PARENT_ORGANISATION_ID** — the parent healthcare-party id new users will be attached to.
 
+You obtain all of these from the [Cockpit Portal](https://cockpit.icure.cloud/). The [Cardinal Quick Start](https://docs.icure.com/how-to/index) walks you through it.
 
-## Requirements
-Make sure the following tools are installed on your machine:
-- [NodeJS](https://nodejs.org/en) (Node 16 + at least)
-- [Yarn Package manager](https://yarnpkg.com/getting-started/install)
-
-
-## Which technologies are used ?
-- [ReactJS](https://react.dev/)
-- [Redux Toolkit](https://redux-toolkit.js.org/), as a state container
-- [localForage](https://github.com/localForage/localForage), as an asynchronous Javascript storage
-- [FriendlyCaptcha](https://friendlycaptcha.com/), as a CAPTCHA solution
-
-We chosed this set of technologies, because we consider them as the most efficient ones to work with.
-Nonetheless, you can of course work with the technologies of your choices and still integrate the iCure MedTech Typescript SDK in your React JS app.
+> **Without these values, authentication will not complete.** The app will load but you will not be able to log in or register.
 
 
-## What includes this template ?
-- The [Cardinal SDK](https://github.com/icure) dependency;
-- A first implementation of the [authentication flow](https://docs.icure.com/how-to/initialize-the-sdk/), both registration and login.
+## 3. Run the app
+
+```
+yarn dev
+```
+
+The dev server starts at <http://localhost:5173>. Vite handles HMR and Less compilation natively — edit a `.less` file and it hot-reloads.
+
+Other scripts:
+
+| Command        | What it does                                               |
+|----------------|------------------------------------------------------------|
+| `yarn dev`     | Run the Vite dev server with HMR.                          |
+| `yarn build`   | Produce an optimized production bundle in `build/`.        |
+| `yarn preview` | Serve the built bundle locally (smoke-test before deploy). |
+| `yarn lint`    | Run ESLint over `src/`.                                    |
+| `yarn test`    | Run the Vitest suite.                                      |
 
 
-## What's next ?
-Check out our [Documentation](https://docs.icure.com/) and more particularly our [How To's](https://docs.icure.com/how-to/index), in order to start implementing new functionalities inside your React JS App !
+## 4. Requirements
+
+- [Node.js](https://nodejs.org/en) 20 or newer.
+- [Yarn](https://yarnpkg.com/getting-started/install) (the project pins `yarn@4.0.1` via `packageManager`).
 
 
-## Contact us:
+## 5. What you get out of the box
+
+- **Authentication** — both email-link signup and returning-user login via the Cardinal SDK 2.x two-stage init (`CardinalBaseSdk` → `.toFullSdk(...)`). See [`src/core/services/auth.api.ts`](./src/core/services/auth.api.ts).
+- **Persisted "remember me"** — a long-lived token (30 days) stored in IndexedDB via `redux-persist` + `localForage`, replayed automatically on reload through [`src/layout/Layout`](./src/layout/Layout/index.tsx).
+- **Captcha integration** — Kerberus proof-of-work resolved client-side (no extra site key required). See [`src/components/authentication/KerberusCaptcha`](./src/components/authentication/KerberusCaptcha/index.tsx).
+- **End-to-end encryption plumbing** — `TemplateCryptoStrategies` generates an RSA keypair on first signup, surfaces the resulting recovery key via [`NewRecoveryKeyBanner`](./src/components/authentication/NewRecoveryKeyBanner/index.tsx), and prompts for it on returning login through [`RecoveryKeyPrompt`](./src/components/authentication/RecoveryKeyPrompt/index.tsx).
+- **Routing & gating** — public/authenticated layouts in [`src/layout/`](./src/layout/) bracket route groups; the only authenticated page so far is `/home` ([`DashboardPage`](./src/pages/DashboardPage/index.tsx)).
+- **One example domain query** — [`src/core/api/practitionerApi.ts`](./src/core/api/practitionerApi.ts) shows the RTK Query + `queryFn` + `guard()` pattern to follow for every other Cardinal API.
+
+
+## 6. Stack
+
+- [Vite](https://vitejs.dev/) for dev server and bundling
+- [React 19](https://react.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/) for state and async thunks
+- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) for SDK-backed queries
+- [redux-persist](https://github.com/rt2zz/redux-persist) + [localForage](https://github.com/localForage/localForage) for the credential persistence layer
+- [Ant Design 6](https://ant.design/) for UI
+- [React Router 7](https://reactrouter.com/) for routing
+- [Less](https://lesscss.org/), compiled by Vite natively
+- [Vitest](https://vitest.dev/) for tests
+- The Cardinal SDK ([`@icure/cardinal-sdk`](https://www.npmjs.com/package/@icure/cardinal-sdk)) for everything Cardinal-related, including its built-in Kerberus captcha
+
+You can swap any of these — none of the Cardinal integration is locked to a specific UI/state-management library.
+
+
+## 7. Where to go from here
+
+- [`ARCHITECTURE.md`](./ARCHITECTURE.md) — the rationale for each layer, the auth state machine, what's implemented vs. what you still have to build (multi-group selector, SMS auth, domain APIs, logout UX, …).
+- [Cardinal SDK docs](https://docs.icure.com/) — full API reference and how-tos.
+- [Cardinal How-Tos](https://docs.icure.com/how-to/index) — recipe-style guides for common tasks (creating patients, adding health elements, sharing data, etc.).
+
+
+## 8. Help
+
 - [Cardinal website](https://cardinalsdk.com/en)
 - [Help Centre](https://icure.atlassian.net/servicedesk/customer/user/login?destination=portals)
+- [Vite docs](https://vitejs.dev/guide/) for anything Vite-specific (env vars, deployment, plugins, …).
