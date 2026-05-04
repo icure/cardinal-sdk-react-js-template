@@ -145,9 +145,7 @@ Cardinal stores patient data end-to-end encrypted with each data owner's RSA key
 
 **Without a saved recovery key, a user logging in from a new device cannot decrypt their old data.** The banner makes saving the key a deliberate, visible step. There is intentionally no automatic email-the-recovery-key escape hatch — that would defeat end-to-end encryption.
 
-For richer reference (recovery flows that include parent-HCP keys, fine-grained verification), see `../retinobridge/src/core/services/auth.api.ts`.
-
-## 8. Captcha (Kerberus, not FriendlyCaptcha)
+## 8. Captcha (Kerberus)
 
 The 2.x SDK accepts `CaptchaOptions.Kerberus.Computed({ solution })`. The browser:
 1. fetches a `Challenge` from `${MSG_GW_URL}/${SPEC_ID}/challenge`,
@@ -155,8 +153,6 @@ The 2.x SDK accepts `CaptchaOptions.Kerberus.Computed({ solution })`. The browse
 3. passes the resulting `Solution` to `CardinalBaseSdk.initializeWithProcess(...)`.
 
 The `KerberusCaptcha` component (`src/components/authentication/KerberusCaptcha/`) encapsulates fetch + resolve + progress reporting and is mounted inside both `LoginForm` and `SignupForm`. It auto-resolves on mount and renders an Antd `<Progress>` while computing; submit is disabled until `Solution` arrives. If the user takes too long to submit, you can force a re-resolve by bumping the optional `refreshCounter` prop.
-
-The previous `friendly-challenge` widget and the `FRIENDLY_CAPTCHA_SITE_KEY` env var are gone in v2.x — Kerberus is server-issued and needs no extra site key.
 
 ## 9. Where to add a new Cardinal-backed feature
 
@@ -201,11 +197,11 @@ Never re-instantiate `CardinalSdk` outside `auth.api.ts`. Always go through `car
 
 ### You'll need to build for a real product
 
-- **Multi-group / environment selection UI.** The template auto-picks the first group in `groupSelector` and warns to console. See `../retinobridge/src/core/services/auth.api.ts:396-405` for a richer reference.
-- **Parent-HCP key bootstrap** if your product has parent organisations whose keys need recovery alongside the user's own. See retinobridge's `ParentCryptoStrategies` and `checkAndHandleParentKeyInit`.
+- **Multi-group / environment selection UI.** The template auto-picks the first group in `groupSelector` and warns to console.
+- **Parent-HCP key bootstrap** if your product has parent organisations whose keys need recovery alongside the user's own.
 - **SMS authentication.** Only the email path is wired. The SDK supports `AuthenticationProcessTelecomType.Mobile` and `VITE_SMS_AUTHENTICATION_PROCESS_ID`.
 - **Domain features.** `practitionerApi.ts` is the only example. Real apps need `Patient`, `HealthElement`, `Contact`/`Service`, `Document`, `Message`, `Agenda`/`CalendarItem`, etc.
-- **Internationalisation.** No i18n library is wired; retinobridge uses `react-i18next`.
+- **Internationalisation.** No i18n library is wired; you can easily add `react-i18next`.
 - **Logout UX.** The `logout` thunk exists but no Header button is rendered.
 - **Error / notification surface.** Errors are `console.error`'d. Wire a toast library (Antd's `notification` API works fine).
 - **Token refresh / expiry UX.** Long-lived token expires after 30 days; nothing reminds the user. Either implement silent refresh (re-call `user.getToken` periodically) or surface a re-login banner.
@@ -225,5 +221,4 @@ Never re-instantiate `CardinalSdk` outside `auth.api.ts`. Always go through `car
 
 - Cardinal SDK docs: https://docs.icure.com/
 - Cockpit (admin portal where you obtain `applicationId`, `specId`, `processId`, etc.): https://cockpit.icure.cloud/
-- Reference 2.x app, richer than this template (env selection, parent-HCP key init, replications, full i18n): `../retinobridge`
 - Cardinal SDK on npm: https://www.npmjs.com/package/@icure/cardinal-sdk
