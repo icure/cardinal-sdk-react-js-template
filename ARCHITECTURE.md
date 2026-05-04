@@ -2,7 +2,7 @@
 
 A guide for developers picking up this repo. Explains *why* things are shaped the way they are, *what already works*, and *what you still have to build* to ship a real product on top of this template.
 
-For a Claude Code-facing summary, see [`CLAUDE.md`](./CLAUDE.md). For end-user / template-consumer instructions, see [`README.md`](./README.md). This file complements both — it doesn't repeat them.
+For end-user / template-consumer instructions, see [`README.md`](./README.md).
 
 ## 1. What this repo is
 
