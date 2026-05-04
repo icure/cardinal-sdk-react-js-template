@@ -1,52 +1,44 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Input, Button, Form } from 'antd'
+import { Solution } from '@icure/cardinal-sdk'
 
 import { routes } from '../../../navigation/Router'
-import FriendlyCaptcha from '../FriendlyCaptcha'
+import KerberusCaptcha from '../KerberusCaptcha'
 
-import '../index.css'
+import '../index.less'
 import { SpinLoader } from '../../SpinLoader'
 
 interface LoginFormProps {
   state: 'initialised' | 'loading' | 'waitingForToken'
-  submitEmailForTokenRequest: (email: string, captchaToken: string) => void
+  submitEmailForTokenRequest: (email: string, captchaSolution: Solution) => void
   submitEmailAndValidationTokenForAuthentication: (email: string, validationCode: string) => void
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ state, submitEmailForTokenRequest, submitEmailAndValidationTokenForAuthentication }) => {
-  const [captchaToken, setCaptchaToken] = useState<string | undefined>(undefined)
-
-  const doneCallback = (solution: string) => {
-    setCaptchaToken(solution)
-  }
+  const [captchaSolution, setCaptchaSolution] = useState<Solution | undefined>(undefined)
 
   /**
-   * This function is called each time we press on the submit button of the login form
-   * Depending on the state of the api, it will either set the email to let redux start
-   * the authentication ot try to log you in using the email and token
-   *
-   * @param values
+   * Called whenever the login form is submitted. Depending on the SDK state we either
+   * trigger a one-time-code email or complete the authentication with the entered code.
    */
   const handleSubmit = (values: { email: string; validationCode: string }) => {
     const { email, validationCode } = values
 
-    /** Some error management should be done here ? */
     if (email.length === 0) {
       return
     }
 
     if (state === 'waitingForToken') {
-      /** Some error management should be done here ? */
       if (validationCode.length === 0) {
         return
       }
       submitEmailAndValidationTokenForAuthentication(email, validationCode)
     } else {
-      if (!captchaToken) {
+      if (!captchaSolution) {
         return
       }
-      submitEmailForTokenRequest(email, captchaToken)
+      submitEmailForTokenRequest(email, captchaSolution)
     }
   }
 
@@ -68,7 +60,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ state, submitEmailForTokenRequest
             </Form.Item>
           )}
         </div>
-        <Button type="primary" size="large" htmlType="submit" disabled={(state === 'initialised' && !captchaToken) || state === 'loading'}>
+        {state !== 'waitingForToken' && <KerberusCaptcha successCallback={setCaptchaSolution} />}
+        <Button type="primary" size="large" htmlType="submit" disabled={(state === 'initialised' && !captchaSolution) || state === 'loading'}>
           {state === 'waitingForToken' ? 'Log in' : 'Receive a one time code'}
         </Button>
         <div className="auth-form__textHelper">
@@ -79,8 +72,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ state, submitEmailForTokenRequest
             </Link>
           </p>
         </div>
-
-        <FriendlyCaptcha successCallback={doneCallback} />
       </Form>
     </>
   )

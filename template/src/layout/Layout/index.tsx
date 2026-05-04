@@ -5,6 +5,8 @@ import { routes } from '../../navigation/Router'
 import { CardinalApiState, login, setEmail, setToken } from '../../core/services/auth.api'
 import { createSelector } from '@reduxjs/toolkit'
 import { AppState } from '../../core/app'
+import RecoveryKeyPrompt from '../../components/authentication/RecoveryKeyPrompt'
+import NewRecoveryKeyBanner from '../../components/authentication/NewRecoveryKeyBanner'
 
 const selectRestApiData = (state: { cardinalApi: CardinalApiState }) => state.cardinalApi
 const selectAppData = (state: { app: AppState }) => state.app
@@ -38,7 +40,9 @@ function Layout() {
 
   return (
     <div>
+      <NewRecoveryKeyBanner />
       <Outlet />
+      <RecoveryKeyPrompt />
     </div>
   )
 }

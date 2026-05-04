@@ -4,7 +4,7 @@ import { Dropdown } from 'antd'
 import Icon from '@ant-design/icons'
 import { createSelector } from '@reduxjs/toolkit'
 
-import './index.css'
+import './index.less'
 import logo_horizontal from '../../assets/logo_horizontal.svg'
 import { arrowDownIcn, logOutIcn, userIcn } from '../../assets/CustomIcons'
 import { useAppDispatch, useAppSelector } from '../../core/hooks'

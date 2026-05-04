@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
+import { Solution } from '@icure/cardinal-sdk'
 import { useAppDispatch, useAppSelector } from '../../../core/hooks'
 import LoginForm from '../../../components/authentication/LoginForm'
 import { CardinalApiState, completeAuthentication, setEmail, setToken, setWaitingForToken, startAuthentication } from '../../../core/services/auth.api'
 
 import logo from '../../../assets/logo_with_subtitle.svg'
-import '../index.css'
+import '../index.less'
 import { createSelector } from '@reduxjs/toolkit'
 
 const reduxSelector = createSelector(
@@ -19,12 +20,12 @@ export default function LoginPage() {
   const dispatch = useAppDispatch()
   const { waitingForToken, loginProcessStarted } = useAppSelector(reduxSelector)
 
-  const startAuthenticationProcessWithEmailAndCaptchaToken = (email: string, captchaToken: string) => {
-    dispatch(setEmail({ email: email }))
-    dispatch(startAuthentication({ captchaToken: captchaToken }))
+  const startAuthenticationProcessWithEmailAndCaptcha = (email: string, captchaSolution: Solution) => {
+    dispatch(setEmail({ email }))
+    dispatch(startAuthentication({ captchaSolution }))
   }
 
-  const completeAuthenticationProcessWithEmailAndValidationCode = (email: string, validationCode: string) => {
+  const completeAuthenticationProcessWithEmailAndValidationCode = (_email: string, validationCode: string) => {
     dispatch(setToken({ token: validationCode }))
     dispatch(completeAuthentication())
   }
@@ -42,8 +43,8 @@ export default function LoginPage() {
       </div>
       <LoginForm
         state={loginProcessStarted ? 'loading' : waitingForToken ? 'waitingForToken' : 'initialised'}
-        submitEmailForTokenRequest={(email: string, captchaToken: string) => startAuthenticationProcessWithEmailAndCaptchaToken(email, captchaToken)}
-        submitEmailAndValidationTokenForAuthentication={(email: string, validationCode: string) => completeAuthenticationProcessWithEmailAndValidationCode(email, validationCode)}
+        submitEmailForTokenRequest={startAuthenticationProcessWithEmailAndCaptcha}
+        submitEmailAndValidationTokenForAuthentication={completeAuthenticationProcessWithEmailAndValidationCode}
       />
     </div>
   )

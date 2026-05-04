@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Form, Input } from 'antd'
+import { Solution } from '@icure/cardinal-sdk'
 
 import { routes } from '../../../navigation/Router'
-import FriendlyCaptcha from '../FriendlyCaptcha'
+import KerberusCaptcha from '../KerberusCaptcha'
 import { SpinLoader } from '../../SpinLoader'
 
 interface SignupFormProps {
   state: 'initialised' | 'loading' | 'waitingForToken'
-  submitEmailForTokenRequest: (firstName: string, lastName: string, email: string, captchaToken: string) => void
+  submitEmailForTokenRequest: (firstName: string, lastName: string, email: string, captchaSolution: Solution) => void
   submitEmailAndValidationTokenForAuthentication: (email: string, validationCode: string) => void
 }
 
 const SignupForm: React.FC<SignupFormProps> = ({ state, submitEmailForTokenRequest, submitEmailAndValidationTokenForAuthentication }) => {
-  const [captchaToken, setCaptchaToken] = useState<string | undefined>(undefined)
-
-  const doneCallback = (solution: string) => {
-    setCaptchaToken(solution)
-  }
+  const [captchaSolution, setCaptchaSolution] = useState<Solution | undefined>(undefined)
 
   const handleSubmit = (values: { firstName: string; lastName: string; email: string; validationCode: string }) => {
     const { firstName, lastName, email, validationCode } = values
@@ -27,11 +24,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ state, submitEmailForTokenReque
       }
       submitEmailAndValidationTokenForAuthentication(email, validationCode)
     } else {
-      if (!captchaToken) {
+      if (!captchaSolution) {
         return
       }
 
-      submitEmailForTokenRequest(firstName, lastName, email, captchaToken)
+      submitEmailForTokenRequest(firstName, lastName, email, captchaSolution)
     }
   }
 
@@ -58,7 +55,8 @@ const SignupForm: React.FC<SignupFormProps> = ({ state, submitEmailForTokenReque
             </Form.Item>
           )}
         </div>
-        <Button type="primary" size="large" htmlType="submit" disabled={(state === 'initialised' && !captchaToken) || state === 'loading'}>
+        {state !== 'waitingForToken' && <KerberusCaptcha successCallback={setCaptchaSolution} />}
+        <Button type="primary" size="large" htmlType="submit" disabled={(state === 'initialised' && !captchaSolution) || state === 'loading'}>
           {state === 'waitingForToken' ? 'Register' : 'Receive a one time code'}
         </Button>
         <div className="auth-form__textHelper">
@@ -69,7 +67,6 @@ const SignupForm: React.FC<SignupFormProps> = ({ state, submitEmailForTokenReque
             </Link>
           </p>
         </div>
-        <FriendlyCaptcha successCallback={doneCallback} />
       </Form>
     </>
   )

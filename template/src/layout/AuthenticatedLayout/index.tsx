@@ -5,6 +5,8 @@ import { useAppSelector } from '../../core/hooks'
 import { routes } from '../../navigation/Router'
 import { createSelector } from '@reduxjs/toolkit'
 import { CardinalApiState } from '../../core/services/auth.api'
+import RecoveryKeyPrompt from '../../components/authentication/RecoveryKeyPrompt'
+import NewRecoveryKeyBanner from '../../components/authentication/NewRecoveryKeyBanner'
 
 const reduxSelector = createSelector(
   (state: { cardinalApi: CardinalApiState }) => state.cardinalApi,
@@ -25,7 +27,9 @@ function AuthenticatedLayout() {
 
   return (
     <div>
+      <NewRecoveryKeyBanner />
       <Outlet />
+      <RecoveryKeyPrompt />
     </div>
   )
 }

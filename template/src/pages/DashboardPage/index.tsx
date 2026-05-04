@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'antd'
 import { Header } from '../../components/Header'
 
-import './index.css'
+import './index.less'
 
 export default function DashboardPage() {
   return (
