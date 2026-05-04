@@ -9,13 +9,29 @@ For the architectural tour (auth state machine, encryption model, where to add n
 
 ## 1. Scaffold a new project
 
+Pick whichever flow fits your workflow:
+
+### Option A — "Use this template" (GitHub)
+
+Click **Use this template → Create a new repository** at the top of [the repository page](https://github.com/icure/cardinal-sdk-react-js-template). GitHub creates a fresh repo under your account with a single initial commit. Then:
+
+```
+git clone git@github.com:<you>/<your-new-repo>.git my-health-tech-app
+cd my-health-tech-app
+yarn install
+```
+
+After cloning, update `package.json#name` (and `#description`) to match your new project — GitHub templates don't substitute these.
+
+### Option B — `degit` (no GitHub repo on your side)
+
 ```
 npx degit icure/cardinal-sdk-react-js-template my-health-tech-app
 cd my-health-tech-app
 yarn install
 ```
 
-`degit` makes a fresh checkout with no git history. Initialise your own:
+`degit` makes a fresh local checkout with no git history. Initialise your own:
 
 ```
 git init && git add . && git commit -m "Initial commit"
@@ -30,7 +46,7 @@ Copy `.env.default` to `.env` and fill in the values:
 cp .env.default .env
 ```
 
-- **VITE_APPLICATION_ID** — your Cardinal project / application identifier.
+- **VITE_PROJECT_ID** — your Cardinal project / application identifier.
 - **VITE_EXTERNAL_SERVICES_SPEC_ID** — identifier the message gateway uses to dispatch the one-time-code email.
 - **VITE_EMAIL_AUTHENTICATION_PROCESS_ID** (and/or **VITE_SMS_AUTHENTICATION_PROCESS_ID**) — identifies which authentication process template to run.
 - **VITE_PARENT_ORGANISATION_ID** — the parent healthcare-party id new users will be attached to.
@@ -61,7 +77,7 @@ Other scripts:
 
 ## 4. Requirements
 
-- [Node.js](https://nodejs.org/en) 20 or newer.
+- [Node.js](https://nodejs.org/en) 20 or newer (24 recommended).
 - [Yarn](https://yarnpkg.com/getting-started/install) (the project pins `yarn@4.0.1` via `packageManager`).
 
 

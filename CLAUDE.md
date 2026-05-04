@@ -32,7 +32,7 @@ ESLint is configured via the flat config in `eslint.config.js` (ESLint 10) — n
 ## Required env before running
 
 Copy `.env.default` → `.env` and fill in:
-- `VITE_APPLICATION_ID`
+- `VITE_PROJECT_ID`
 - `VITE_EXTERNAL_SERVICES_SPEC_ID`
 - `VITE_EMAIL_AUTHENTICATION_PROCESS_ID` (and/or `VITE_SMS_AUTHENTICATION_PROCESS_ID`)
 - `VITE_PARENT_ORGANISATION_ID`
