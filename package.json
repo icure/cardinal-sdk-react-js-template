@@ -5,6 +5,9 @@
   "type": "module",
   "description": "Vite + React + TypeScript starter for e-health apps using the iCure Cardinal SDK.",
   "packageManager": "yarn@4.0.1",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
